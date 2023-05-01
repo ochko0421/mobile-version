@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, Image } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Map from './Map';
 import HomeScreen from './HomeScreen';
+import { useState } from 'react';
 
 function MyTabBar({ state, descriptors, navigation, position }) {
   return (
@@ -73,10 +74,6 @@ function MyTabBar({ state, descriptors, navigation, position }) {
         />
       </View>
 
-      <Map style={{
-        marginLeft: 100,
-        width: 100, height: 100
-      }} />
 
     </View>
 
@@ -86,17 +83,40 @@ function MyTabBar({ state, descriptors, navigation, position }) {
 
 
 function SettingsScreen() {
+  const traffic= false;
+  const style={
+    width:"100%",
+    height:300
+  }
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Friends List</Text>
+    <View style={{ 
+      flex:1, 
+      flexDirection:"column"
+     }}>
+      <Map
+      traffic={traffic}
+      style={style}
+      />
+      <Text style={{
+        alignSelf:"center"
+      }}>Friends List</Text>
     </View>
   );
 }
 
 function ProfileScreen() {
+  const traffic=true;
+  const style = {
+      width: "100%", 
+      height: 700
+  }
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Friends List</Text>
+    <View style={{ }}>
+     <Map traffic={traffic}
+     style={style}
+      
+      />
+      
     </View>
   );
 }
@@ -104,12 +124,15 @@ function ProfileScreen() {
 const Tab = createMaterialTopTabNavigator();
 
 export default function DetailsScreen() {
+
+  
+ 
   return (
 
     <Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
-      <Tab.Screen name="Bus Tracking" component={HomeScreen} />
-      <Tab.Screen name="Friends Location" component={SettingsScreen} />
-      <Tab.Screen name="Traffic" component={ProfileScreen} />
+      <Tab.Screen  name="Bus Tracking" component={HomeScreen} />
+      <Tab.Screen  name="Friends Location" component={SettingsScreen} />
+      <Tab.Screen  name="Traffic" component={ProfileScreen } />
     </Tab.Navigator>
 
   );

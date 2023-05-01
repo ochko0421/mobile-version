@@ -2,7 +2,7 @@ import { View } from "react-native";
 import MapView from "react-native-maps"
 
 
-export default function Map(){
+export default function Map({traffic,style}){
 
     const center = {
         latitude: 47.90771,
@@ -13,12 +13,9 @@ export default function Map(){
 
     return <View>
         <MapView
-        style={{
-            width:"100%",
-            height:300
-        }}
+        style={style}
         initialRegion={center}
-        
+        showsTraffic={traffic}
         >
             </MapView>
     </View>

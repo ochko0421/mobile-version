@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
 import { Alert, Modal, StyleSheet, Text, Pressable, View, TextInput } from 'react-native';
+import Map from './Map';
 
 export default function HomeScreen() {
   const [modalVisible, setModalVisible] = useState(false);
+  const traffic= false;
+  const style={
+    width:"100%",
+    height:300
+  }
   return (
-    <View style={styles.centeredView}>
+    <View style={{}}>
+      <Map
+       traffic={traffic}
+       style={style}/>
       <Modal
         animationType="slide"
         transparent={true}
