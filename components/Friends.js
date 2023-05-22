@@ -1,34 +1,23 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from "react-native"
+import Map from "./Map";
+export default function Friends() {
+    const traffic = false;
+    const style = {
+        width: "100%",
+        height: 700
+    }
 
-import { SwipeablePanel } from 'rn-swipeable-panel';
+    return (
+        <View style={{
+            flex: 1,
+            flexDirection: "column"
+        }}>
+            <Map
+                traffic={traffic}
+                style={style}
+                activeTab="friends"
+            />
 
-export default Friends = () => {
-  const [panelProps, setPanelProps] = useState({
-    fullWidth: true,
-    openLarge: true,
-    showCloseButton: true,
-    onClose: () => closePanel(),
-    onPressCloseButton: () => closePanel(),
-    // ...or any prop you want
-  });
-  const [isPanelActive, setIsPanelActive] = useState(false);
-
-  const openPanel = () => {
-    setIsPanelActive(true);
-  };
-
-  const closePanel = () => {
-    setIsPanelActive(false);
-  };
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.welcome}>Welcome to React Native!</Text>
-      <Text style={styles.instructions}>To get started, edit App.js</Text>
-      <SwipeablePanel {...panelProps} isActive={isPanelActive}>
-        <PanelContent /> {/* Your Content Here */}
-      </SwipeablePanel>
-    </View>
-  );
-};
+        </View>
+    );
+}
